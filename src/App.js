@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import Home from './pages/home/Home';
+import SignIn from './pages/signIn/SignIn';
+import SignUp from './pages/signUp/SignUp';
+import ProtectedRoutes from './components/protectedRoutes/ProtectedRoutes';
 
 function App() {
+  const [isLogged, setIsLogged] = useState(false);
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const handlerUserRegistry = ({ name, email, password }) => {
+    setUserInfo({ name: name, email: email, password: password });
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/signIn" element={<SignIn setIsLogged={setIsLogged} userInfo={userInfo} />} />
+        <Route path="/signUp" element={<SignUp setIsLogged={setIsLogged} userRegistry={handlerUserRegistry} />} />
+        <Route element={<ProtectedRoutes isLogged={isLogged} />} >
+          <Route path="/" element={<Home />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
