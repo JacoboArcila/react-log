@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
 import { useNavigate, Link } from 'react-router-dom';
+import {Container, Input, Form, ContainerText, Button} from '../SignStyles';
+import Swal from "sweetalert2";
 
 const SignIn = ({ setIsLogged, userInfo }) => {
-  const [signIn, setSignIn] = useState({ email: "", password: "" });
+  const [signIn, setSignIn] = useState({ email: "l", password: "l" });
   const navigate = useNavigate();
   const handlerSubmit = (e) => {
     e.preventDefault();
@@ -11,25 +13,51 @@ const SignIn = ({ setIsLogged, userInfo }) => {
       signIn.password === userInfo.password
     ) {
       setIsLogged(true);
-      navigate("/home");
+      navigate("/");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: "success",
+        title: "Signed in successfully",
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Failed to login!",
+      });
     }
   };
 
   return (
-    <div>
-      <form onSubmit={handlerSubmit}>
-        <input
+    <Container>
+      <Form onSubmit={handlerSubmit}>
+        <h1>Sign In</h1>
+        <Input
           placeholder="email"
           onChange={(e) => setSignIn({ ...signIn, email: e.target.value })}
         />
-        <input
+        <Input
           placeholder="password"
           onChange={(e) => setSignIn({ ...signIn, password: e.target.value })}
         />
-        <Link to="/singup">Sing In</Link>
-        <button type="submit">Send</button>
-      </form>
-    </div>
+        <ContainerText>
+          <p><input type="checkbox" /> Remember Account</p>
+          <Button type="submit">Login</Button>
+          <Link to="/signUp">Sing Up</Link>
+        </ContainerText>
+      </Form>
+    </Container>
   )
 }
 

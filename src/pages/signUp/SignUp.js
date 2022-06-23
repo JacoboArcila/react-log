@@ -1,41 +1,67 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import { Container, Input, Form, ContainerText, Button } from "../SignStyles";
+import Swal from "sweetalert2";
 
-const SignUp = ({ setIsLogged, userRegistry }) => {
+const SignUp = ({ userRegistry }) => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isSent, setIsSent] = useState(false);
 
   const navigate = useNavigate();
 
   const handlerSubmit = (e) => {
-    setIsSent(true);
     let value = {
       name,
       email,
       password,
     };
-    userRegistry(value);
+    if (name === "" || email === "" || password === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Fill in all the fields!",
+      });
+    } else {
+      navigate("/signIn");
+      userRegistry(value);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: "success",
+        title: "Successfully registered",
+      });
+    }
     e.preventDefault();
-    setIsLogged(true);
-    navigate("/singin");
   };
   return (
-    <div>
-      <form onSubmit={handlerSubmit}>
-        <input placeholder="name" onChange={(e) => setName(e.target.value)} />
-        <input placeholder="email" onChange={(e) => setEmail(e.target.value)} />
-        <input
+    <Container>
+      <Form onSubmit={handlerSubmit}>
+        <h1>Sign Up</h1>
+        <Input placeholder="name" onChange={(e) => setName(e.target.value)} />
+        <Input placeholder="email" onChange={(e) => setEmail(e.target.value)} />
+        <Input
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Link to="/singin">Sing In</Link>
-        <button type="submit">Send</button>
-      </form>
-    </div>
+        <ContainerText>
+          <p><input type="checkbox" /> I read and agree to <span> Terms & Conditions </span></p>
+          <Button type="submit">Create Account</Button>
+          <p>Alredy have an account? <Link to="/signIn">Sing In</Link></p>
+        </ContainerText>
+      </Form>
+    </Container>
   );
 };
 

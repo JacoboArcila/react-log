@@ -10,7 +10,7 @@ const ProtectedRoutes = ({isLogged}) => {
  */
   return (
     <div> 
-        {isLogged ? <Outlet /> : <Navigate to="/signUp" />}
+        {isLogged ? <Outlet /> : <Navigate to="/signIn" />}
     </div>
   )
 }
