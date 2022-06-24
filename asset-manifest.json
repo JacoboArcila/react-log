@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/react-log/static/js/main.5cd6a9b3.js",
-    "index.html": "/react-log/index.html",
-    "main.5cd6a9b3.js.map": "/react-log/static/js/main.5cd6a9b3.js.map"
+    "main.js": "/react-log/home/static/js/main.73530b39.js",
+    "index.html": "/react-log/home/index.html",
+    "main.73530b39.js.map": "/react-log/home/static/js/main.73530b39.js.map"
   },
   "entrypoints": [
-    "static/js/main.5cd6a9b3.js"
+    "static/js/main.73530b39.js"
   ]
 }
