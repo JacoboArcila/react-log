@@ -21,7 +21,7 @@ function App() {
     <BrowserRouter>
       <GlobalStyles />
       <Routes>
-        <Route path="/react-log/signIn" element={<SignIn setIsLogged={setIsLogged} userInfo={userInfo} />} />
+        <Route path="react-log/signIn" element={<SignIn setIsLogged={setIsLogged} userInfo={userInfo} />} />
         <Route path="/react-log/signUp" element={<SignUp userRegistry={handlerUserRegistry} />} />
         <Route element={<ProtectedRoutes isLogged={isLogged} />} >
           <Route path="/react-log/home" element={<Home />} />
