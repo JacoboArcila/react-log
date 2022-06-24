@@ -24,7 +24,7 @@ const SignUp = ({ userRegistry }) => {
         text: "Fill in all the fields!",
       });
     } else {
-      navigate("/signIn");
+      navigate("/react-log/signIn");
       userRegistry(value);
       const Toast = Swal.mixin({
         toast: true,
@@ -58,7 +58,7 @@ const SignUp = ({ userRegistry }) => {
         <ContainerText>
           <p><input type="checkbox" /> I read and agree to <span> Terms & Conditions </span></p>
           <Button type="submit">Create Account</Button>
-          <p>Alredy have an account? <Link to="/signIn">Sing In</Link></p>
+          <p>Alredy have an account? <Link to="/react-log/signIn">Sing In</Link></p>
         </ContainerText>
       </Form>
     </Container>

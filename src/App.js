@@ -21,10 +21,10 @@ function App() {
     <BrowserRouter>
       <GlobalStyles />
       <Routes>
-        <Route path="/signIn" element={<SignIn setIsLogged={setIsLogged} userInfo={userInfo} />} />
-        <Route path="/signUp" element={<SignUp userRegistry={handlerUserRegistry} />} />
+        <Route path="/react-log/signIn" element={<SignIn setIsLogged={setIsLogged} userInfo={userInfo} />} />
+        <Route path="/react-log/signUp" element={<SignUp userRegistry={handlerUserRegistry} />} />
         <Route element={<ProtectedRoutes isLogged={isLogged} />} >
-          <Route path="/" element={<Home />} />
+          <Route path="/react-log/home" element={<Home />} />
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
