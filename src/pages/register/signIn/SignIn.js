@@ -54,7 +54,7 @@ const SignIn = ({ setIsLogged, userInfo }) => {
         <ContainerText>
           <p><input type="checkbox" /> Remember Account</p>
           <Button type="submit">Login</Button>
-          <Link to="/signUp">Sing Up</Link>
+          <Link to="/register/signUp">Sing Up</Link>
         </ContainerText>
       </Form>
     </Container>

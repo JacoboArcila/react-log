@@ -47,7 +47,7 @@ export const ContainerText = styled.div`
 
 export const Button = styled.button`
     display: block;
-    margin: 30px auto;
+    margin: 20px auto;
     padding: 10px 30px;
     border-radius: 20px;
     border: none;

@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Container, Input, Form, ContainerText, Button } from "../SignStyles";
-import Swal from "sweetalert2";
+
+/* import Swal from "sweetalert2"; */
 
 const SignUp = ({ formik }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
@@ -53,19 +51,36 @@ const SignUp = ({ formik }) => {
           name="name"
           onChange={formik.handleChange}
           value={formik.values.name}
+          error={formik.errors.name}
         />
+         { formik.errors.name && <p>{formik.errors.name}</p>}
         <Input
           placeholder="email"
           name="email"
           onChange={formik.handleChange}
           value={formik.values.email}
+          error={formik.errors.email}
         />
+         { formik.errors.email && <p>{formik.errors.email}</p>}
+
         <Input
           placeholder="password"
           name="password"
           onChange={formik.handleChange}
           value={formik.values.password}
+          error={formik.errors.password}
         />
+         { formik.errors.password && <p>{formik.errors.password}</p>}
+
+        <Input
+          placeholder="Confirm Password"
+          name="confirmPassword"
+          onChange={formik.handleChange}
+          value={formik.values.confirmPassword}
+          error={formik.errors.confirmPassword}
+        />
+         { formik.errors.confirmPassword && <p>{formik.errors.confirmPassword}</p>}
+
         <ContainerText>
           <p>
             <input type="checkbox" /> I read and agree to{" "}
@@ -73,7 +88,7 @@ const SignUp = ({ formik }) => {
           </p>
           <Button type="submit">Create Account</Button>
           <p>
-            Alredy have an account? <Link to="/signIn">Sing In</Link>
+            Alredy have an account? <Link to="/register/signIn">Sing In</Link>
           </p>
         </ContainerText>
       </Form>

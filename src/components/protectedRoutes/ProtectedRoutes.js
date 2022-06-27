@@ -2,17 +2,11 @@ import React from 'react'
 import {Outlet, Navigate} from 'react-router-dom';
 
 const ProtectedRoutes = ({isLogged}) => {
-   /*  if(isLogged) {
+    if(isLogged) {
         return <Outlet />
-    } else if {
-        return <Navigate to="/signIn" />
+    } else {
+        return <Navigate to="/register" />
     }
- */
-  return (
-    <div> 
-        {isLogged ? <Outlet /> : <Navigate to="/signIn" />}
-    </div>
-  )
 }
 
 export default ProtectedRoutes
