@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <Container>
         <h2>Forms</h2>
-        <Link to="/react-log/signIn">
+        <Link to="/signIn">
             <Button>Log out</Button>
         </Link>
     </Container>

@@ -3,15 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { Container, Input, Form, ContainerText, Button } from "../SignStyles";
 import Swal from "sweetalert2";
 
-const SignUp = ({ userRegistry }) => {
-
+const SignUp = ({ formik }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
-  const handlerSubmit = (e) => {
+  /* const handlerSubmit = (e) => {
     let value = {
       name,
       email,
@@ -24,7 +23,7 @@ const SignUp = ({ userRegistry }) => {
         text: "Fill in all the fields!",
       });
     } else {
-      navigate("/react-log/signIn");
+      navigate("/signIn");
       userRegistry(value);
       const Toast = Swal.mixin({
         toast: true,
@@ -44,21 +43,38 @@ const SignUp = ({ userRegistry }) => {
       });
     }
     e.preventDefault();
-  };
+  }; */
   return (
     <Container>
-      <Form onSubmit={handlerSubmit}>
+      <Form onSubmit={formik.handleSubmit}>
         <h1>Sign Up</h1>
-        <Input placeholder="name" onChange={(e) => setName(e.target.value)} />
-        <Input placeholder="email" onChange={(e) => setEmail(e.target.value)} />
+        <Input
+          placeholder="name"
+          name="name"
+          onChange={formik.handleChange}
+          value={formik.values.name}
+        />
+        <Input
+          placeholder="email"
+          name="email"
+          onChange={formik.handleChange}
+          value={formik.values.email}
+        />
         <Input
           placeholder="password"
-          onChange={(e) => setPassword(e.target.value)}
+          name="password"
+          onChange={formik.handleChange}
+          value={formik.values.password}
         />
         <ContainerText>
-          <p><input type="checkbox" /> I read and agree to <span> Terms & Conditions </span></p>
+          <p>
+            <input type="checkbox" /> I read and agree to{" "}
+            <span> Terms & Conditions </span>
+          </p>
           <Button type="submit">Create Account</Button>
-          <p>Alredy have an account? <Link to="/react-log/signIn">Sing In</Link></p>
+          <p>
+            Alredy have an account? <Link to="/signIn">Sing In</Link>
+          </p>
         </ContainerText>
       </Form>
     </Container>

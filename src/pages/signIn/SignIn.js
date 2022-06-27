@@ -13,7 +13,7 @@ const SignIn = ({ setIsLogged, userInfo }) => {
       signIn.password === userInfo.password
     ) {
       setIsLogged(true);
-      navigate("/react-log/home");
+      navigate("/");
       const Toast = Swal.mixin({
         toast: true,
         position: "bottom-end",
@@ -54,7 +54,7 @@ const SignIn = ({ setIsLogged, userInfo }) => {
         <ContainerText>
           <p><input type="checkbox" /> Remember Account</p>
           <Button type="submit">Login</Button>
-          <Link to="/react-log/signUp">Sing Up</Link>
+          <Link to="/signUp">Sing Up</Link>
         </ContainerText>
       </Form>
     </Container>
