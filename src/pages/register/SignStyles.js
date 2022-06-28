@@ -23,13 +23,14 @@ export const Form = styled.form`
 `
 
 export const Input = styled.input`
-    margin: 30px auto;
+    margin: 15px auto;
     display: block;
     width: 70%;
     height: 40px;
     border: none;
+    outline: none;
     border-radius: 30px;
-    padding: 5px 20px;
+    padding: 5px 20px 5px 40px;
     -webkit-box-shadow: 0px 4px 29px -5px rgba(67,97,238,1);
     -moz-box-shadow: 0px 4px 29px -5px rgba(67,97,238,1);
     box-shadow: 0px 4px 29px -5px rgba(67,97,238,1);
@@ -37,7 +38,7 @@ export const Input = styled.input`
 
 export const ContainerText = styled.div`
     text-align: center;
-    margin-top: 50px;
+    margin-top: 30px;
 
     p {
         font-size: 11px;
@@ -60,3 +61,17 @@ export const Button = styled.button`
         cursor: pointer;
     }
 `
+
+export const Section = styled.section`
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    position: relative;
+`
+
+export const IconSpan = styled.span`
+    padding: 2%;
+    position: absolute;
+    top: 20px;
+    left: 35px;
+`;

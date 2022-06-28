@@ -1,85 +1,71 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Container, Input, Form, ContainerText, Button } from "../SignStyles";
-
-/* import Swal from "sweetalert2"; */
+import React, {useState} from "react";
+import { Link } from "react-router-dom";
+import {
+  Container,
+  Input,
+  Form,
+  ContainerText,
+  Button,
+  Section,
+  IconSpan,
+} from "../SignStyles";
+import PersonIcon from "@mui/icons-material/Person";
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import LockIcon from '@mui/icons-material/Lock';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 const SignUp = ({ formik }) => {
-
-  const navigate = useNavigate();
-
-  /* const handlerSubmit = (e) => {
-    let value = {
-      name,
-      email,
-      password,
-    };
-    if (name === "" || email === "" || password === "") {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Fill in all the fields!",
-      });
-    } else {
-      navigate("/signIn");
-      userRegistry(value);
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "bottom-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-
-      Toast.fire({
-        icon: "success",
-        title: "Successfully registered",
-      });
-    }
-    e.preventDefault();
-  }; */
+  const [control, setControl] = useState(false);
+  
   return (
     <Container>
       <Form onSubmit={formik.handleSubmit}>
         <h1>Sign Up</h1>
-        <Input
-          placeholder="name"
-          name="name"
-          onChange={formik.handleChange}
-          value={formik.values.name}
-          error={formik.errors.name}
-        />
-         { formik.errors.name && <p>{formik.errors.name}</p>}
-        <Input
-          placeholder="email"
-          name="email"
-          onChange={formik.handleChange}
-          value={formik.values.email}
-          error={formik.errors.email}
-        />
-         { formik.errors.email && <p>{formik.errors.email}</p>}
-
-        <Input
-          placeholder="password"
-          name="password"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-          error={formik.errors.password}
-        />
-         { formik.errors.password && <p>{formik.errors.password}</p>}
-
-        <Input
-          placeholder="Confirm Password"
-          name="confirmPassword"
-          onChange={formik.handleChange}
-          value={formik.values.confirmPassword}
-          error={formik.errors.confirmPassword}
-        />
-         { formik.errors.confirmPassword && <p>{formik.errors.confirmPassword}</p>}
+        <Section>
+          <IconSpan>
+            <PersonIcon />	
+          </IconSpan>
+          <Input
+            placeholder="name"
+            name="name"
+            onChange={formik.handleChange}
+            value={formik.values.name}
+          />
+        </Section>
+        <Section>
+          <IconSpan>
+            <AlternateEmailIcon />
+          </IconSpan>
+          <Input
+            placeholder="email"
+            name="email"
+            onChange={formik.handleChange}
+            value={formik.values.email}
+          />
+        </Section>
+        <Section>
+          <IconSpan>
+            <Password control={control} setControl={setControl} />
+          </IconSpan>
+          <Input
+            placeholder="password"
+            name="password"
+            onChange={formik.handleChange}
+            value={formik.values.password}
+          />
+        </Section>
+        <Section>
+          <IconSpan>
+            <Password control={control} setControl={setControl} />
+          </IconSpan>
+          <Input
+            placeholder="Confirm Password"
+            name="confirmPassword"
+            onChange={formik.handleChange}
+            value={formik.values.confirmPassword}
+          />
+        </Section>
+        {formik.errors.confirmPassword}
 
         <ContainerText>
           <p>
@@ -97,3 +83,12 @@ const SignUp = ({ formik }) => {
 };
 
 export default SignUp;
+
+
+export function Password({ control, setControl }){
+  if (control) {
+    return <LockIcon onClick={()=> setControl(control => !control)}/>
+  } else {
+    return <LockOpenIcon onClick={()=> setControl(control => !control)}/>
+  }
+}

@@ -9,6 +9,8 @@ import SignIn from "./pages/register/signIn/SignIn";
 import SignUp from "./pages/register/signUp/SignUp";
 import ProtectedRoutes from "./components/protectedRoutes/ProtectedRoutes";
 import NotFound from "./pages/notFound/NotFound";
+import Layout from "./components/Layout/Layout";
+import Swal from "sweetalert2";
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -33,16 +35,31 @@ function App() {
     }),
 
     onSubmit: (values) => {
-      console.log(values);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Successfully registered",
+      });
     },
   });
 
   return (
     <BrowserRouter>
+    <Layout>
       <GlobalStyles />
       <Routes>
         <Route path="/register" element={<Register />} >
-          <Route path="/register/signIn" element={<SignIn setIsLogged={setIsLogged} />} />
+          <Route path="/register/signIn" element={<SignIn formik={formik} setIsLogged={setIsLogged} />} />
           <Route path="/register/signUp" element={<SignUp formik={formik} />} />
         </Route>
         <Route element={<ProtectedRoutes isLogged={isLogged} />}>
@@ -50,6 +67,7 @@ function App() {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
+    </Layout>
     </BrowserRouter>
   );
 }

@@ -1,16 +1,18 @@
-import React, {useState} from 'react'
-import { useNavigate, Link } from 'react-router-dom';
-import {Container, Input, Form, ContainerText, Button} from '../SignStyles';
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { Container, Input, Form, ContainerText, Button, Section, IconSpan } from "../SignStyles";
 import Swal from "sweetalert2";
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import LockIcon from '@mui/icons-material/Lock';
 
-const SignIn = ({ setIsLogged, userInfo }) => {
+const SignIn = ({ setIsLogged, formik }) => {
   const [signIn, setSignIn] = useState({ email: "l", password: "l" });
   const navigate = useNavigate();
   const handlerSubmit = (e) => {
     e.preventDefault();
     if (
-      signIn.email === userInfo.email &&
-      signIn.password === userInfo.password
+      signIn.email === formik.values.email &&
+      signIn.password === formik.values.password
     ) {
       setIsLogged(true);
       navigate("/");
@@ -43,22 +45,36 @@ const SignIn = ({ setIsLogged, userInfo }) => {
     <Container>
       <Form onSubmit={handlerSubmit}>
         <h1>Sign In</h1>
-        <Input
-          placeholder="email"
-          onChange={(e) => setSignIn({ ...signIn, email: e.target.value })}
-        />
-        <Input
-          placeholder="password"
-          onChange={(e) => setSignIn({ ...signIn, password: e.target.value })}
-        />
+        <Section>
+          <IconSpan>
+            <AlternateEmailIcon />
+          </IconSpan>
+          <Input
+            placeholder="email"
+            onChange={(e) => setSignIn({ ...signIn, email: e.target.value })}
+          />
+        </Section>
+        <Section>
+          <IconSpan>
+            <LockIcon />
+          </IconSpan>
+          <Input
+            placeholder="password"
+            onChange={(e) => setSignIn({ ...signIn, password: e.target.value })}
+          />
+        </Section>
         <ContainerText>
-          <p><input type="checkbox" /> Remember Account</p>
+          <p>
+            <input type="checkbox" /> Remember Account
+          </p>
           <Button type="submit">Login</Button>
           <Link to="/register/signUp">Sing Up</Link>
         </ContainerText>
       </Form>
     </Container>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;
+
+

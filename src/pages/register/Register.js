@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useNavigate, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Register = () => {
   return (
