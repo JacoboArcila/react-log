@@ -34,6 +34,11 @@ export const Input = styled.input`
     -webkit-box-shadow: 0px 4px 29px -5px rgba(67,97,238,1);
     -moz-box-shadow: 0px 4px 29px -5px rgba(67,97,238,1);
     box-shadow: 0px 4px 29px -5px rgba(67,97,238,1);
+    transition: ease 0.3s all;
+
+    &:focus {
+        background-color: rgb(229 229 229);
+    }
 `
 
 export const ContainerText = styled.div`

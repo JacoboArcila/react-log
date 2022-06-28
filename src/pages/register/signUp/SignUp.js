@@ -49,6 +49,7 @@ const SignUp = ({ formik }) => {
           </IconSpan>
           <Input
             placeholder="password"
+            type={control ? "text" : "password"}
             name="password"
             onChange={formik.handleChange}
             value={formik.values.password}
@@ -61,6 +62,7 @@ const SignUp = ({ formik }) => {
           <Input
             placeholder="Confirm Password"
             name="confirmPassword"
+            type={control ? "text" : "password"}
             onChange={formik.handleChange}
             value={formik.values.confirmPassword}
           />
@@ -86,7 +88,7 @@ export default SignUp;
 
 
 export function Password({ control, setControl }){
-  if (control) {
+  if (!control) {
     return <LockIcon onClick={()=> setControl(control => !control)}/>
   } else {
     return <LockOpenIcon onClick={()=> setControl(control => !control)}/>

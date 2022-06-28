@@ -1,16 +1,24 @@
 import React, { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout/Layout";
+import Swal from "sweetalert2";
+
+/* ------- Forms ----------- */
 import { useFormik } from "formik";
 import * as Yup from "yup";
+
+/* ----------Styled ------------- */
+import { Theme } from "./Theme";
+import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./globalStyles";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+/* ---------Pages------------- */
 import Home from "./pages/home/Home";
 import Register from "./pages/register/Register";
 import SignIn from "./pages/register/signIn/SignIn";
 import SignUp from "./pages/register/signUp/SignUp";
 import ProtectedRoutes from "./components/protectedRoutes/ProtectedRoutes";
 import NotFound from "./pages/notFound/NotFound";
-import Layout from "./components/Layout/Layout";
-import Swal from "sweetalert2";
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -55,19 +63,21 @@ function App() {
 
   return (
     <BrowserRouter>
-    <Layout>
-      <GlobalStyles />
-      <Routes>
-        <Route path="/register" element={<Register />} >
-          <Route path="/register/signIn" element={<SignIn formik={formik} setIsLogged={setIsLogged} />} />
-          <Route path="/register/signUp" element={<SignUp formik={formik} />} />
-        </Route>
-        <Route element={<ProtectedRoutes isLogged={isLogged} />}>
-          <Route path="/" element={<Home />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Layout>
+      <ThemeProvider theme={Theme}>
+        <Layout>
+          <GlobalStyles />
+          <Routes>
+            <Route path="/register" element={<Register />} >
+              <Route path="/register/signIn" element={<SignIn formik={formik} setIsLogged={setIsLogged} />} />
+              <Route path="/register/signUp" element={<SignUp formik={formik} />} />
+            </Route>
+            <Route element={<ProtectedRoutes isLogged={isLogged} />}>
+              <Route path="/" element={<Home />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Layout>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }

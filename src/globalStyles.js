@@ -8,7 +8,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        background: #560bad;
+        background-color: ${({theme}) => theme.background};
     }
 `
 
