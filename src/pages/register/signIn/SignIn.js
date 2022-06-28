@@ -4,6 +4,7 @@ import { Container, Input, Form, ContainerText, Button, Section, IconSpan } from
 import Swal from "sweetalert2";
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import LockIcon from '@mui/icons-material/Lock';
+import WarningIcon from '@mui/icons-material/Warning';
 
 const SignIn = ({ setIsLogged, formik }) => {
   const [signIn, setSignIn] = useState({ email: "l", password: "l" });
@@ -63,6 +64,7 @@ const SignIn = ({ setIsLogged, formik }) => {
             onChange={(e) => setSignIn({ ...signIn, password: e.target.value })}
           />
         </Section>
+        <p className="error">{formik.errors.confirmPassword ? "Warning!" : null}  </p>
         <ContainerText>
           <p>
             <input type="checkbox" /> Remember Account

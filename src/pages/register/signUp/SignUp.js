@@ -67,7 +67,8 @@ const SignUp = ({ formik }) => {
             value={formik.values.confirmPassword}
           />
         </Section>
-        {formik.errors.confirmPassword}
+
+        <p className="error">{formik.errors.confirmPassword ? "Error" : null}</p>
 
         <ContainerText>
           <p>

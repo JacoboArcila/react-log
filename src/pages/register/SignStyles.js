@@ -4,6 +4,12 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    .error {
+        color: red;
+        text-align: center;
+        font-weight: bold;
+    }
 `
 
 export const Form = styled.form`
