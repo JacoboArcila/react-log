@@ -1,10 +1,11 @@
 {
-  "files": {
-    "main.js": "/react-log/home/static/js/main.73530b39.js",
-    "index.html": "/react-log/home/index.html",
-    "main.73530b39.js.map": "/react-log/home/static/js/main.73530b39.js.map"
-  },
-  "entrypoints": [
-    "static/js/main.73530b39.js"
-  ]
+  "main.js": "/react-log/home/static/js/main.93e68800.chunk.js",
+  "main.js.map": "/react-log/home/static/js/main.93e68800.chunk.js.map",
+  "static/js/1.9e810374.chunk.js": "/react-log/home/static/js/1.9e810374.chunk.js",
+  "static/js/1.9e810374.chunk.js.map": "/react-log/home/static/js/1.9e810374.chunk.js.map",
+  "runtime~main.js": "/react-log/home/static/js/runtime~main.e5215e6a.js",
+  "runtime~main.js.map": "/react-log/home/static/js/runtime~main.e5215e6a.js.map",
+  "index.html": "/react-log/home/index.html",
+  "precache-manifest.33488adf6b5bc9f0bd6a270f04837dd6.js": "/react-log/home/precache-manifest.33488adf6b5bc9f0bd6a270f04837dd6.js",
+  "service-worker.js": "/react-log/home/service-worker.js"
 }
