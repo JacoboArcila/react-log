@@ -1,14 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Container, Input, Form, ContainerText, Button, Section, IconSpan } from "../SignStyles";
+import {
+  Container,
+  Input,
+  Form,
+  ContainerText,
+  Button,
+  Section,
+  IconSpan,
+} from "../SignStyles";
 import Swal from "sweetalert2";
-import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
-import LockIcon from '@mui/icons-material/Lock';
-import WarningIcon from '@mui/icons-material/Warning';
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import {Password} from '../signUp/SignUp';
 
 const SignIn = ({ setIsLogged, formik }) => {
   const [signIn, setSignIn] = useState({ email: "l", password: "l" });
+  const [control, setControl] = useState(false);
+
   const navigate = useNavigate();
+
   const handlerSubmit = (e) => {
     e.preventDefault();
     if (
@@ -16,7 +26,7 @@ const SignIn = ({ setIsLogged, formik }) => {
       signIn.password === formik.values.password
     ) {
       setIsLogged(true);
-      navigate("/");
+      navigate("/home");
       const Toast = Swal.mixin({
         toast: true,
         position: "bottom-end",
@@ -57,14 +67,17 @@ const SignIn = ({ setIsLogged, formik }) => {
         </Section>
         <Section>
           <IconSpan>
-            <LockIcon />
+            <Password control={control} setControl={setControl} />
           </IconSpan>
           <Input
             placeholder="password"
+            type={control ? "text" : "password"}
             onChange={(e) => setSignIn({ ...signIn, password: e.target.value })}
           />
         </Section>
-        <p className="error">{formik.errors.confirmPassword ? "Warning!" : null}  </p>
+        <p className="error">
+          {formik.errors.confirmPassword ? "Warning!" : null}{" "}
+        </p>
         <ContainerText>
           <p>
             <input type="checkbox" /> Remember Account
@@ -78,5 +91,3 @@ const SignIn = ({ setIsLogged, formik }) => {
 };
 
 export default SignIn;
-
-

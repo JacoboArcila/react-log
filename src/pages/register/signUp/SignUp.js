@@ -16,7 +16,6 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 const SignUp = ({ formik }) => {
   const [control, setControl] = useState(false);
-  
   return (
     <Container>
       <Form onSubmit={formik.handleSubmit}>
@@ -67,15 +66,12 @@ const SignUp = ({ formik }) => {
             value={formik.values.confirmPassword}
           />
         </Section>
-
-        <p className="error">{formik.errors.confirmPassword ? "Error" : null}</p>
-
         <ContainerText>
           <p>
-            <input type="checkbox" /> I read and agree to{" "}
+            <input type="checkbox" /> I read and agree to
             <span> Terms & Conditions </span>
           </p>
-          <Button type="submit">Create Account</Button>
+          <Button onClick={() => console.log("click")} type="submit">Create Account</Button>
           <p>
             Alredy have an account? <Link to="/register/signIn">Sing In</Link>
           </p>

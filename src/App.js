@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import Layout from "./components/Layout/Layout";
+
 import Swal from "sweetalert2";
 
 /* ------- Forms ----------- */
@@ -19,6 +21,7 @@ import SignIn from "./pages/register/signIn/SignIn";
 import SignUp from "./pages/register/signUp/SignUp";
 import ProtectedRoutes from "./components/protectedRoutes/ProtectedRoutes";
 import NotFound from "./pages/notFound/NotFound";
+import User from "./pages/user/User";
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -42,7 +45,11 @@ function App() {
         .required("Confirm password is required"),
     }),
 
+    validateOnChange: false,
+    validateOnBlur: false,
+
     onSubmit: (values) => {
+      console.log(values)
       const Toast = Swal.mixin({
         toast: true,
         position: "bottom-end",
@@ -72,7 +79,8 @@ function App() {
               <Route path="/register/signUp" element={<SignUp formik={formik} />} />
             </Route>
             <Route element={<ProtectedRoutes isLogged={isLogged} />}>
-              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/home/user/:login" element={<User />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
