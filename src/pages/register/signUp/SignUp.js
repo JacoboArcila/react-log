@@ -63,7 +63,6 @@ const SignUp = ({ formik }) => {
             name="confirmPassword"
             type={control ? "text" : "password"}
             onChange={formik.handleChange}
-            value={formik.values.confirmPassword}
           />
         </Section>
         <ContainerText>

@@ -1,7 +1,7 @@
-import React from 'react';
-import {Container} from './HomeStyles';
-import {useNavigate} from 'react-router-dom';
-import useRequest from '../../hooks/useRequest';
+import React from "react";
+import { Container, ContainerUser, H1 } from "./HomeStyles";
+import { useNavigate } from "react-router-dom";
+import useRequest from "../../hooks/useRequest";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -10,21 +10,28 @@ const Home = () => {
   const data = useRequest(url);
 
   return (
-    <Container>
-      {
-        data &&
-        data.map(i =>
-          <div key={i.id}>
-            <h1>{i.login}</h1>
-            <img src={i.avatar_url} alt={i.login} />
-            <div>
-              <button onClick={()=> navigate(`/home/user/${i.login}`)}>Ver mas</button>
+    <div>
+      <H1>Users</H1>
+      <Container>
+      {data &&
+        data.map((i) => (
+          <ContainerUser key={i.id}>
+            <h3 className="name">{i.login}</h3>
+            <div className="contenedor">
+              <a href="#">
+                <figure>
+                  <img src={i.avatar_url} alt={i.login} />
+                  <div className="capa">
+                    <button onClick={()=> navigate(`/home/user/${i.login}`)}>Ver mas</button>
+                  </div>
+                </figure>
+              </a>
             </div>
-          </div>
-        )
-      }
+          </ContainerUser>
+        ))}
     </Container>
-  )
-}
+    </div>
+  );
+};
 
-export default Home
+export default Home;
