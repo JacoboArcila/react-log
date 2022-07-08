@@ -21,3 +21,26 @@ export const Button = styled.button`
         cursor: pointer
     }
 `
+
+export const SearchForm = styled.form`
+`;
+
+export const SearchInput = styled.input`
+    width: 400px;
+    height: 27px;
+    padding: 10px;
+    border: none;
+    :focus{
+        outline: none;
+    }
+    border-radius: 10px 0 0 10px;
+    letter-spacing: 5px;
+`;
+
+export const SearchButton = styled.button`
+    padding: 10px;
+    border: none;
+    border-radius: 0 10px 10px 0;
+    background-color: white;
+    
+`;
