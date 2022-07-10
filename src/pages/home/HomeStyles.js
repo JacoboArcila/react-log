@@ -54,19 +54,17 @@ export const Container = styled.div`
     margin: 120px  auto;
     padding: 10px 50px;
     border: none;
-    background-color: white;
-    color: black;
+    background-color: transparent;
+    color: white;
     font-size: 15px;
     border-radius: 30px;
-    -webkit-box-shadow: 0px 3px 7px -1px rgba(255, 255, 255, 1);
-    -moz-box-shadow: 0px 3px 7px -1px rgba(255, 255, 255, 1);
-    box-shadow: 0px 3px 7px -1px rgba(255, 255, 255, 1);
+    text-decoration: underline;
     transition: all 0.2s ease;
+    font-size: 20px;
 
     &:hover {
-      background-color: black;
-      color: white;
       cursor: pointer;
+      color: purple;
     }
   }
 `;
