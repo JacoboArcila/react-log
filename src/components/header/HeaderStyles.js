@@ -27,7 +27,7 @@ export const SearchForm = styled.form`
 
 export const SearchInput = styled.input`
     width: 400px;
-    height: 27px;
+    height: 26px;
     padding: 10px;
     border: none;
     :focus{
@@ -38,9 +38,13 @@ export const SearchInput = styled.input`
 `;
 
 export const SearchButton = styled.button`
-    padding: 10px;
+    padding: 15px 15px;
     border: none;
     border-radius: 0 10px 10px 0;
-    background-color: white;
-    
+    background-color: #023047;
+    color: white;
+
+    &:hover {
+        cursor:pointer;
+    }
 `;
