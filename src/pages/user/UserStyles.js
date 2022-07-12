@@ -31,3 +31,10 @@ export const P = styled.p`
 export const ContainerText = styled.div`
     width: 500px;
 `
+
+export const Button = styled.button`
+    display: flex;
+    margin: 20px auto;
+    padding: 20px 20%;
+    font-size: 20px;
+`
