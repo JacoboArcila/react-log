@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Container,
@@ -14,13 +14,11 @@ import { Stack, Autocomplete, TextField } from "@mui/material";
 /* import 'bootstrap/dist/css/bootstrap.min.css'; */
 
 const Header = () => {
-
   const { handleSubmit, setSearchInput } = useSearch();
   const url = `https://api.github.com/users`;
   const user = useRequest(url);
-  console.log(user)
 
-  const [p , setP] = useState("");
+  const [control, setControl] = useState(false);
 
   return (
     <Container>
@@ -32,23 +30,32 @@ const Header = () => {
         />
         <SearchButton type="submit">Buscar</SearchButton>
       </SearchForm> */}
+
+      {user && (
+        <Autocomplete
+          options={user.map((u) => {
+            return u.login;
+          })}
+          renderInput={(params) => (
+            <SearchForm onSubmit={(e) => control ? handleSubmit(e) : null}>
+              <TextField
+                className="textField"
+                variant="filled"
+                onChange={(e) => setSearchInput(e.target.value)}
+                {...params}
+                label="Busca Usuarios"
+              />
+              <SearchButton type="submit">Buscar</SearchButton>
+            </SearchForm>
+          )}
+          onChange={(e) => setSearchInput(e.target.textContent)}
+          freeSolo
+        />
+      )}
+
       <Link to="/register/signIn">
         <Button>Log out</Button>
       </Link>
-      {
-        user && 
-        <Autocomplete 
-          options={user.map(u => {
-      return u.login
-    })}
-          renderInput={(params) => (
-            <SearchForm onSubmit={(e) => handleSubmit(e)}>
-              <TextField onClick={(e) => setSearchInput(e.target.value)} onChange={(e) => setSearchInput(e.target.value)} {...params} label="Usuarios" />
-              <SearchButton type="submit">Buscar</SearchButton>
-            </SearchForm>
-            )}
-        />
-      }
     </Container>
   );
 };

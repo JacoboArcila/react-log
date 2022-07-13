@@ -23,6 +23,12 @@ export const Button = styled.button`
 `
 
 export const SearchForm = styled.form`
+.textField {
+    width: 500px;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 10px 0 0 10px;
+    color: black
+}
 `;
 
 export const SearchInput = styled.input`
@@ -38,7 +44,7 @@ export const SearchInput = styled.input`
 `;
 
 export const SearchButton = styled.button`
-    padding: 15px 15px;
+    padding: 20px 15px;
     border: none;
     border-radius: 0 10px 10px 0;
     background-color: #023047;
