@@ -8,6 +8,7 @@ export const useSearch = () => {
         e.preventDefault();
         navigate(`/home/user/${searchInput}`);
     };
+    console.log(searchInput)
 
     return {
         handleSubmit,

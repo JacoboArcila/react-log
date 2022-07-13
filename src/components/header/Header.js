@@ -37,7 +37,7 @@ const Header = () => {
             return u.login;
           })}
           renderInput={(params) => (
-            <SearchForm onSubmit={(e) => control ? handleSubmit(e) : null}>
+            <SearchForm onSubmit={(e) => handleSubmit(e)}>
               <TextField
                 className="textField"
                 variant="filled"
