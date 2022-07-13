@@ -6,9 +6,10 @@ export const useSearch = () => {
     const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(`dentro ${searchInput} `)
         navigate(`/home/user/${searchInput}`);
     };
-    console.log(searchInput)
+    console.log(`afuera ${searchInput} `)
 
     return {
         handleSubmit,
