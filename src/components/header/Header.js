@@ -6,11 +6,11 @@ import {
   SearchForm,
   SearchInput,
   SearchButton,
+  Sugerencia,
 } from "./HeaderStyles";
 import { useSearch } from "../../hooks/useSearch";
 import useRequest from "../../hooks/useRequest";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Autosuggest from "react-autosuggest";
 
 const Header = () => {
 
@@ -18,9 +18,7 @@ const Header = () => {
   const url = `https://api.github.com/users`;
   const user = useRequest(url);
   console.log(user)
-  const [users, setUsers] = useState(user);
-  const [value, setValue] = useState("");
-  const [selecionado, setSeleccionado] = useState({});
+
 
   return (
     <Container>
@@ -36,7 +34,6 @@ const Header = () => {
         <Button>Log out</Button>
       </Link>
 
-      
     </Container>
   );
 };

@@ -48,3 +48,8 @@ export const SearchButton = styled.button`
         cursor:pointer;
     }
 `;
+
+
+export const Sugerencia = styled.div`
+    padding: 5px;
+`
